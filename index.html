@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>traffic light</title>
-    <h1>Traffic Light</h1> <br><br><br>
+    <h1 tabindex="1">Traffic Light</h1> <br><br><br>
     <style>
          *{
             margin: 0px;
@@ -28,7 +28,13 @@
              background-color: #444;
              color: #fff;
              text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+             box-shadow: 0px 0px 10px rgba(155, 11, 11, 0.5);
+         }
+         h1:focus{
+            background-color: #444;
+             color: #fff;
+             text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+             box-shadow: 0px 0px 10px rgba(155, 11, 11, 0.5);
          }
          body{
             background: url(digital-art-dark-cosmic-night-sky.jpg);
@@ -105,6 +111,10 @@
           background-color: #3e8e41; 
           box-shadow: 0px 0px 10px #8a2b2bfd;
           }
+          .button:focus{
+            background-color: #3e8e41; 
+          box-shadow: 0px 0px 10px #8a2b2bfd;
+          }
           
           @media only screen and (max-width: 450px) {
             .main {
@@ -145,16 +155,16 @@
         </style>
 </head>
 <body>
-    <div class="main" tabindex="1" title="Traffic light">
+    <div class="main"  title="Traffic light">
         <div title="Stop" class="light red"></div>
         <div title="Slow" class="light yellow" ></div>
         <div title="Go" class="light green"></div>
     </div>
     <div class="pole"></div> <br><br>
     <div class="button">
-      <button title="Turn On" onclick="turnon()">Turn on</button>
-      <button title="Turn off" onclick="turnoff()">Turn off</button>
-      <button aria-label="About Traffic light" title="About Traffic light" onclick="gotoLink(this)" value="https://en.wikipedia.org/wiki/Traffic_light">About</button>
+      <button tabindex="1" title="Turn On" onclick="turnon()">Turn on</button>
+      <button tabindex="1" title="Turn off" onclick="turnoff()">Turn off</button>
+      <button tabindex="1" aria-label="About Traffic light" title="About Traffic light" onclick="gotoLink(this)" value="https://en.wikipedia.org/wiki/Traffic_light">About</button>
     </div>
       
     <script>
