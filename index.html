@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>traffic light</title>
-    <h1>Traffic Light</h1>
+    <h1>Traffic Light</h1> <br><br><br>
     <style>
          *{
             margin: 0px;
             padding: 0px;
-            box-sizing: border-box;
          }
          h1{
             text-align: center;
@@ -34,14 +33,12 @@
          body{
             background: url(digital-art-dark-cosmic-night-sky.jpg);
             background-size: cover;
+            background-repeat: no-repeat;
          }
          .main{
             display: table;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            border: 3px solid #080808;
-            margin-left: 910px;
-            margin-top: 85px;
+            border: 3px #080808;
+            margin: auto;
             background-color: #333;
             border-radius: 10px;
          }
@@ -65,37 +62,127 @@
             border: 4px solid black;
          }
          .yellow:hover{
-          background-color: #87870D;
-          border-color: #e7be09;
+          background-color: #e7e71b;
+          border-color: #5e4d04;
           } 
          .green{
             background-color: #124412;
             border: 4px solid black;
         }
         .green:hover{
-          background-color: #004700;
+          background-color: #19b119;
           border-color: #245304;
          }
 
-        
-            .pole{
+         .pole{
           width: 20px;
-          min-height: 200px; /* minimum height */
-          height: 250px; /* specific height */
+          min-height: 200px;
+          margin: auto;
+          height: 250px; 
           border: 3px solid #080808;
           background-color: white;
-          margin-left: 950px;
-}
-       
-    </style>
+         } 
+         .button{
+          background-color: rgba(153, 141, 141, 0.5); 
+          text-align: center;
+           margin: auto;
+           width: 450px;
+           padding: 10px 20px;
+         }
+         .button button {
+         background-color: #333;
+         color: #fff;
+         padding: 10px 20px;
+         text-align: center;
+
+         border: none;
+         border-radius: 10px;
+         cursor: pointer;
+         font-weight: bold;
+       }
+
+          .button button:hover {
+          background-color: #3e8e41; 
+          box-shadow: 0px 0px 10px #8a2b2bfd;
+          }
+          
+          @media only screen and (max-width: 768px) {
+            .main {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .light {
+                margin: 10px;
+            }
+            .pole {
+                margin: 10px;
+            }
+            .button {
+                flex-direction: column;
+            }
+            .button button {
+                margin: 10px;
+            }
+        }
+        @media only screen and (max-width: 450px) {
+            .main {
+                flex-direction: column;
+            }
+            .light {
+                margin: 5px;
+            }
+            .pole {
+                margin: 5px;
+            }
+            .button {
+                flex-direction: column;
+            }
+            .button button {
+                margin: 5px;
+            }
+        }
+        
+        </style>
 </head>
 <body>
     <div class="main">
-        <div class="light red"></div>
-        <div class="light yellow" ></div>
-        <div class="light green"></div>
+        <div title="Stop" class="light red"></div>
+        <div title="Slow" class="light yellow" ></div>
+        <div title="Go" class="light green"></div>
     </div>
-    <div class="pole"></div>
-     
+    <div class="pole"></div> <br><br>
+    <div class="button">
+      <button title="Turn On" onclick="turnon()">Turn on</button>
+      <button title="Turn off" onclick="turnoff()">Turn off</button>
+      <button title="About Traffic light" onclick="gotoLink(this)" value="https://en.wikipedia.org/wiki/Traffic_light">About</button>
+    </div>
+      
+    <script>
+      var currentLight = 0;
+      var lights = document.querySelectorAll('.light');
+      var colors = ['#EB0000', '#e7e71b', '#19b119']; 
+      var timerId;
+    
+      function turnon() {
+        currentLight = (currentLight + 1) % lights.length;
+        for (var i = 0; i < lights.length; i++) {
+          lights[i].style.opacity = 0.2;
+          lights[i].style.backgroundColor = colors[i]; 
+        }
+        lights[currentLight].style.opacity = 1;
+        timerId = setTimeout(turnon, 2000);
+      }
+    
+      function turnoff() {
+        for (var i = 0; i < lights.length; i++) {
+          lights[i].style.opacity = 0.6;
+        }
+        clearTimeout(timerId);
+      }
+      function gotoLink(link){
+       console.log(link.value);
+       window.open(link.value, '_blank');
+       }
+    </script>
 </body>
 </html>
